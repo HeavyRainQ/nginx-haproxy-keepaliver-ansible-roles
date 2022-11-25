@@ -1,0 +1,14 @@
+---
+# tasks file for haproxy
+
+- name: install haproxy start
+  apt: 
+    name: haproxy
+    state: latest
+- name: copy config file
+  template:
+    src=./roles/haproxy/templates/haproxy.cfg.j2
+    dest=/etc/haproxy/haproxy.cfg
+  notify:
+    - restart haproxy
+    - msg

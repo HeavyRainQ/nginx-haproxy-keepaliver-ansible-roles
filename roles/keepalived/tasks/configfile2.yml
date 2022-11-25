@@ -1,0 +1,8 @@
+- name: copy configfile on keepalivedserver
+  template:
+    src=./roles/keepalived/templates/keepalived.conf2.j2
+    dest=/etc/keepalived/keepalived.conf
+- name: restart keepalived
+  service:
+    name: keepalived
+    state: reloaded 

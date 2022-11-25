@@ -1,0 +1,14 @@
+---
+# tasks file for keepalived]
+
+- name: keepalived install start
+  apt:
+    name: keepalived
+    state: latest
+- name: copy config file
+  template:
+    src=./roles/keepalived/templates/keepalived.conf.j2
+    dest=/etc/keepalived/keepalived.conf
+  notify:
+    - restart keepalived
+    - msg   

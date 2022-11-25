@@ -1,0 +1,9 @@
+vrrp_instance VI_1 {
+        interface enp0s3
+	state MASTER
+        virtual_router_id 1
+        priority 101
+        virtual_ipaddress {
+                192.168.0.115   
+        }
+}

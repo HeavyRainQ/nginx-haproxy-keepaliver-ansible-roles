@@ -1,0 +1,11 @@
+---
+# handlers file for nginx2
+
+- name: restart nginx
+  service:
+    name: nginx
+    state: restarted
+
+- name: msg
+  debug:
+    msg: "Nginx restarted"

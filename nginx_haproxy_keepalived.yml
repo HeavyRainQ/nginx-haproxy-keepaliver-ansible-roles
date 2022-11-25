@@ -1,0 +1,39 @@
+- name: install nginx on servers
+  hosts: nginx1
+  become: yes
+#######Preparation before task#########
+#  pre_tasks:
+#  - include_tasks: ./roles/nginx1/tasks/update.yml
+#######################################
+  roles:
+  - nginx1
+#######To force the launch of handlers.#######
+#  post_tasks:
+#  - include_tasks: ./roles/nginx1/handlers/main.yml
+##############################################
+- name: install nginx on servers
+  hosts: nginx2
+  become: yes
+
+  roles:
+    - nginx2
+
+- name : install haproxy on server
+  hosts: haproxy
+  become: yes
+
+  roles: 
+    - haproxy 
+
+- name: install keepalived on server
+  hosts: loadbalancers
+  become: yes
+
+  roles:
+    - keepalived
+  
+- name: copyconfigfile keepalived on second server
+  hosts: keepalived
+  become: yes
+  post_tasks:
+  - include_tasks: ./roles/keepalived/tasks/configfile2.yml    

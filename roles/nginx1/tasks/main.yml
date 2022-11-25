@@ -1,0 +1,13 @@
+---
+# tasks file for webrole
+- name: install nginx start
+  apt:
+    name: nginx
+    state: latest
+- name: copy configfile
+  template:
+    src=./roles/nginx1/templates/index.nginx-debian.html.j2
+    dest=/var/www/html/index.nginx-debian.html
+  notify:
+    - nginxrestarted
+    - succesfull 

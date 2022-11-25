@@ -1,0 +1,10 @@
+---
+# handlers file for webrole
+
+- name: nginxrestarted
+  service:
+    name: nginx 
+    state: restarted
+- name: succesfull  
+  debug:
+    msg: "Nginx install and restarted succesfull!"

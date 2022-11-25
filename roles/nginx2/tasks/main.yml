@@ -1,0 +1,14 @@
+---
+# tasks file for nginx2
+
+- name: install nginx start
+  apt:
+    name: nginx
+    state: latest
+- name: copy configfile
+  template:
+    src=./roles/nginx2/templates/index.nginx-debian2.html.j2
+    dest=/var/www/html/index.nginx-debian.html
+  notify:
+    - restart nginx
+    - msg
